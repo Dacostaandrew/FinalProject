@@ -1,5 +1,6 @@
 # Project - BFF Book
-Due (firm): End of Friday, December 9th, 2016 
+Due (**firm**): End of Friday, December 9th, 2016 
+Past Due: 20% / day
 
 # Introduction
 BFF book is the hotest social networking app. Ever. You form BFF (best friend fornow) connections with other users and there is a ranked popularity list that sorts users based on the number of bffs each has. 
