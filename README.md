@@ -1,13 +1,14 @@
 # Project - BFF Book
 Due (**firm**): End of Friday, December 9th, 2016 
-Past Due: 20% / day
+
+Past Due: 20% off / day
 
 # Introduction
 BFF book is the hotest social networking app. Ever. You form BFF (best friend fornow) connections with other users and there is a ranked popularity list that sorts users based on the number of bffs each has. 
 
-There is also fine-grained privacy model where the amount of your information visible to another user depends on the number of bff connections between you and the other user. 
+There is also fine-grained privacy model where the amount of your information visible to another user depends on the number of bff connections (termed *distance*) between you and the other user. 
 
-Your job is complicated because bff connections can be constantly created or destroyed and this affects the ranked popularity list. You must check the permissions for parts of a profile (name, list of bffs, summary, full-profile) private based on the bff distance between two users.
+Your job is complicated because bff connections can be constantly created or destroyed and this affects the ranked popularity list and the distances. You must check the permissions for parts of a profile (name, list of bffs, summary, full-profile) based on the bff distance between two users.
 
 # Command-line Arguments
 Your program should be invoked like this example:
@@ -25,12 +26,12 @@ Each line in an input file to your program is a comma-separated record of bff ev
 
 More formally, each input line is one of the following commands:
 
-create_user user-id, name, summary-text, full-profile text
-delete_user user-id
-bff userid_from, userid_to
-unbff userid_from, userid_to
-read userid_reader, userid_target, piece-of-info
-rank
+* create_user user-id, name, summary-text, full-profile text
+* delete_user user-id
+* bff userid_from, userid_to
+* unbff userid_from, userid_to
+* read userid_reader, userid_target, piece-of-info
+* rank
 
 Create user creates a user with a given id, parts of the profile, and the id of the new user's first bff (-1 means none). Userids are integers from the input file that are smaller than the maximum number of users.
 
@@ -39,8 +40,9 @@ the ``unbff`` command removes a connection between two users. The edge
 matrix, *distance matrix*, and popularity tree must be updated to reflect the changes
 after these actions. The distance matrix aims to trace the bff distance between users.
 
-The read command just attempts to read part of another user's profile
-to another user. The rank command prints out a list of users ranked by
+The ``read`` command just attempts to read part of another user's profile
+to another user. 
+The ``rank`` command prints out a list of users ranked by
 the number of BFFs.
 
 All other lines are ignored.
@@ -82,10 +84,10 @@ there are two functions for these operations.
 
 # Privacy
 The amount of read permissions a profile has depends on the bff distance, d, between two users:
-d <= 1 – Can read full profile.
-d <= 2 – Can read the summary.
-d <= 3 – Can read the user's list of BFFs.
-d <=4 – Can read the user's name.
+* d <= 1 : Can read full profile.
+* d <= 2 : Can read the summary.
+* d <= 3 : Can read the user's list of BFFs.
+* d <= 4 : Can read the user's name.
 
 This functionality is included in your example code under the handler
 for the "read" command.
