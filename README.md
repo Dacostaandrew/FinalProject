@@ -97,3 +97,22 @@ You will be provided some helpful skeleton code to get started. This
 includes prototypes for the needed data structures, function
 prototypes, and a sketch of what algorithms you have to apply to the
 input data.
+
+# Bonus (10%) incremental update
+
+The update_distances_full implements a full Floyd–Warshall algorithm
+all-pairs shortest paths. But this is very slow.
+
+For a new bff connection (i.e. a new edge added to the graph), we can
+use a faster partial update. You'll have to figure out the logic of
+what to do here in the update_distances_incrementally function given a
+new edge ``(u,v)``.
+
+The idea is to check whether the existing distance ``dist[i][j]`` can be
+improved by going from ``i`` to ``u``, and then to ``v`` and then from
+``v`` to ``j``.
+
+The provided code calls ``update_distances_incrementally`` after a new
+bff connection. If you choose to not do the bonus, you change it to 
+``update_distances_full`` instead.
+
